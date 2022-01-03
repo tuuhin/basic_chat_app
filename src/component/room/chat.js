@@ -8,6 +8,7 @@ export default function Chat() {
   const [chats, setChats] = useState([]);
   const [text, setText] = useState("");
   const messageBox = useRef("");
+  const scroll = useRef();
   useEffect(() => {
     if (socket === null) return;
     socket.on("connect", (args) => {
@@ -23,6 +24,7 @@ export default function Chat() {
     socket.on("message", (args) => {
       // console.log(args);
       setChats([...chats, args]);
+      scroll.current.scrollIntoView({beahavior:'smooth'})
     });
     return () => {
       socket.off();
@@ -76,6 +78,7 @@ export default function Chat() {
             <div>{e.text}</div>
           </Alert>
         ))}
+        <div ref={scroll}></div>
       </Box>
       <Box sx={{ display: "flex", mt: 0 }}>
         <TextField
