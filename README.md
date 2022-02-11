@@ -41,3 +41,5 @@ or
 This will start the backend server
 
 Now,try out the app at [https://localhost:3000](localhost:3000)
+
+it's a stale project just meant for understanding flask_socketIO library
